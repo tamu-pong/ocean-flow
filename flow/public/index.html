@@ -1,21 +1,53 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta charset=utf-8>
-  <title>App</title>
-  <link rel="stylesheet" href="/application.css" type="text/css" charset="utf-8">
-  <script src="/application.js" type="text/javascript" charset="utf-8"></script>
-  <script type="text/javascript" charset="utf-8">
-    var jQuery  = require("jqueryify");
-    var exports = this;
-    jQuery(function(){
-      var App = require("index");
-      exports.app = new App({el: $("body")});      
-    });
-  </script>
-  
-  <!-- Getting started script - should be removed -->
-  <script src="http://maccman-spine.herokuapp.com/start.js" type="text/javascript" charset="utf-8"></script>
-</head>
-<body></body>
+    <head>
+        <meta charset=utf-8>
+        <title>App</title>
+
+        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/flick/jquery-ui.css" type="text/css" charset="utf-8">
+        <link rel="stylesheet" href="/application.css" type="text/css" charset="utf-8">
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places"></script>
+        <script src="/application.js" type="text/javascript" charset="utf-8"></script>
+        <script type="text/javascript" charset="utf-8">
+            var jQuery = require("jqueryify");
+            var exports = this;
+            jQuery(function() {
+                var App = require("index");
+                exports.app = new App({
+                    el : $("body")
+                });
+            });
+        </script>
+
+    </head>
+    <body>
+        <header>
+            <div class='container'>
+
+                <h1> Ocean Flow </h1>
+                <div id="radio">
+                    <input type="checkbox" id="single" name="radio"  />
+                    <label for="single">single</label>
+                    <input type="checkbox" id="radius" name="radio" />
+                    <label for="radius">radius</label>
+                </div>
+                
+                <input type="text" id="datepicker" readonly>
+                
+                <div style="clear:both; "></div>
+            </div>
+
+        </header>
+
+        <div id="main-content">
+            <div id="map_canvas">
+                Map Content
+            </div>
+        </div>
+
+        <footer>
+            Footer
+        </footer>
+
+    </body>
 </html>

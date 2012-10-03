@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html> 
+<head> 
+   <meta http-equiv="content-type" content="text/html; charset=UTF-8"/> 
+   <title>Google Maps v3 Change Cursor Demo</title> 
+   <script src="http://maps.google.com/maps/api/js?sensor=false" 
+           type="text/javascript"></script> 
+</head> 
+<body> 
+   <div id="map" style="width: 500px; height: 350px"></div> 
+
+   <script type="text/javascript"> 
+      var map = new google.maps.Map(document.getElementById("map"), { 
+                                       mapTypeId: google.maps.MapTypeId.ROADMAP, 
+                                       zoom: 8,
+                                       center: new google.maps.LatLng(-34.3, 150.6) 
+                                    });
+
+      var ne = new google.maps.LatLng(-34.00, 150.00);
+      var nw = new google.maps.LatLng(-34.00, 150.50);                              
+      var sw = new google.maps.LatLng(-35.00, 150.50);
+      var se = new google.maps.LatLng(-35.00, 150.00);
+
+      var boundingBox = new google.maps.Polyline({
+         path: [ne, nw, sw, se, ne],
+         strokeColor: '#FF0000'
+      });
+
+      boundingBox.setMap(map);
+
+      google.maps.event.addListener(map, 'mousemove', function(event) {
+         if ((event.latLng.lat() > se.lat()) && (event.latLng.lat() < ne.lat()) &&
+             (event.latLng.lng() > ne.lng()) && (event.latLng.lng() < sw.lng())) {
+            map.setOptions({ draggableCursor: 'crosshair' });
+         }
+         else {
+            map.setOptions({ draggableCursor: 'url(http://maps.google.com/mapfiles/openhand.cur), move' });
+         }
+      });
+   </script> 
+</body> 
+</html>

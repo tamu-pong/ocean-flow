@@ -7,3 +7,6 @@ require('spine/lib/local')
 require('spine/lib/ajax')
 require('spine/lib/manager')
 require('spine/lib/route')
+
+require('lib/jquery-ui.min')
+require('lib/jquery-ui-timepicker')
