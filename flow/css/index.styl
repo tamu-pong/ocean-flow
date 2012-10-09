@@ -1,6 +1,15 @@
 @import './mixin'
 @import './jquery-ui-timepicker-addon'
 
+.clearfix
+    display: block;
+
+.clearfix::after 
+    content: ".";
+    display: block;
+    height: 0;
+    clear: both;
+    visibility: hidden;
 
 body, div, header, footer, h1, h2, h3, h4, h5 {
     margin: 0;
@@ -16,35 +25,77 @@ html, body {
 }
 
 
+header{
+    border-bottom: 1px solid gray;
+}
+footer {
+    border-top: 1px solid gray;
+}
 header h1 {
-    float: left;
+    display: inline-block;
 }
 
 header .container {
-    margin: 10px;
+    padding: 10px;
 }
 
 #radio {
     margin-left: 30px;
-    float: left;    
+}
+
+.datetime-container {
+    border-radius: 3px;
+    cursor:pointer;   
+    padding: 2px;     
 }
 
 header .ui-datepicker-trigger {
     background: none;
     border: none;
 }
+
 header .ui-datepicker-trigger img {
-    width: 40px;
+    width: 25px;
     cursor:pointer;
+    vertical-align: -5px;
+}
+
+ul.toolbar {
+    display: inline-block;
+    list-style-type: none;
+    margin: 0;
+}
+
+ul.toolbar li{
+    display: inline-block;
+    vertical-align: 5px;
+}
+
+ul.right-toolbar {
+    float: right;
+    margin-right: 50px;
+}
+
+.vrule {
+    width: 1px;
+    height: 100%;
+    border-left: 1px solid #F1F1F1;
+    display: inline;
 }
 
 #datepicker {
-    float: left;    
+    cursor:pointer;
+    color: #0073EA;
     background: none;
     border: none;
     font-size: 1.1em;
     text-align: right;
     padding: 5px;
+    margin: 0;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+    height: 22px;
     
 }
         
@@ -52,3 +103,76 @@ header .ui-datepicker-trigger img {
 .ui-widget {
     font-size: inherit;
 }
+
+
+.logo {
+    height: 25px;
+    vertical-align: middle;
+    padding: 5px;
+    border: 1px solid #EEEEEE;
+}
+
+/*.tooltip span.tt {
+    font-size: 20px;
+    position: absolute;
+    z-index: 999;
+    white-space: nowrap;
+    bottom: 9999px;
+    left: 50%;
+    background: #000;
+    color: #e0e0e0;
+    padding: 0px 7px;
+    line-height: 24px;
+    height: 24px;
+    opacity: 0;
+    transition: opacity 0.4s ease-out;
+    
+}
+
+.tooltip span.tt::before {
+
+    content: "";
+    display: block;
+    border-left: 6px solid #000000;
+    border-top: 6px solid transparent;
+    position: absolute;
+    top: -6px;
+    left: 0px;
+
+}
+.tooltip:hover span.tt {
+    opacity: 1;
+    bottom: -35px;
+    left: 0px;
+
+}*/
+
+.tooltip {
+  text-align: center;
+  color: black;
+  display: none;
+  position: absolute;
+  z-index: 999;
+  
+}
+
+.tooltip .text {
+  background-color: black;
+  color:white;
+  margin-top: -15px;
+  padding: 4px;
+  border-radius: 2px;
+  border: 1px solid rgba(255,255,255,.5);
+  font-weight: bold;
+  font-family: Helvetica;
+  font-size: 14px;
+}
+
+.tooltip .arrow {margin-bottom: 8px;margin-top: -5px;}
+
+
+
+
+.hello 
+    this : 1px
+    

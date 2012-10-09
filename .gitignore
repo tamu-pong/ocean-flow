@@ -28,3 +28,5 @@ pip-log.txt
 
 flow/node_modules
 npm-debug.log
+flow/public/application.css
+flow/public/application.js
