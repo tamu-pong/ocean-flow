@@ -91,7 +91,7 @@ ul.toolbar li {
 }
 ul.right-toolbar {
   float: right;
-  margin-right: 50px;
+  margin-right: 150px;
 }
 .vrule {
   width: 1px;
@@ -182,4 +182,10 @@ ul.right-toolbar {
 }
 .hello {
   this: 1px;
+}
+#fork-me {
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  z-index: 999;
 }
