@@ -1,0 +1,77 @@
+
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+
+        <meta charset="utf-8" />
+
+        <title>Tooltip With HTML5 Data Attribute</title>
+
+        <style>
+        div {
+            width: 50%;
+            margin: 30px auto;
+        }   
+        
+        p {
+            font-family: arial;
+            color: #999;
+            line-height: 18px;
+            font-size: 16px;
+            margin: 0 0 18px 0;
+        }
+        
+        a.tooltip {
+            position: relative;
+        }   
+        
+        a.tooltip::before {
+            content: attr(data-tip) ;   
+            font-family: arial, sans-serif; 
+            font-size: 10px;
+            font-weight: bold;
+            position:absolute;
+            z-index: 999;
+            white-space:nowrap;
+            bottom:9999px;
+            left: 50%;
+            background:#000;
+            color:#e0e0e0;
+            padding:0px 7px;
+            line-height: 24px;
+            height: 24px;
+            
+            opacity: 0; 
+            -webkit-transition:opacity 0.4s ease-out;  
+            -moz-transition:opacity 0.4s ease-out;  
+            -o-transition:opacity 0.4s ease-out;  
+            transition:opacity 0.4s ease-out; 
+        }       
+        
+        
+        a.tooltip:hover::before {
+            opacity: 1;
+            bottom:-35px;
+        }           
+        </style>
+        
+        <!--[if IE]>
+            <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+            
+    </head>
+
+    <body>
+    
+        <div>   
+
+            <p>Hi there <a href="#" class="tooltip" data-tip="this is the tip!">This is the link</a> asdf.</p>
+
+            <p>asdfasdfsadf <a href="#" class="tooltip" data-tip="this is the tip!">This is the link</a>  adfasdfsdfasdf  asdf asdf asdf </p>
+
+
+        </div>
+        
+    </body>
+
+</html>
