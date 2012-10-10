@@ -4,10 +4,10 @@
         <meta charset=utf-8>
         <title>App</title>
 
-        <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/flick/jquery-ui.css" type="text/css" charset="utf-8">
-        <link rel="stylesheet" href="/application.css" type="text/css" charset="utf-8">
+<!--         <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.21/themes/flick/jquery-ui.css" type="text/css" charset="utf-8"> -->
+        <link rel="stylesheet" href="application.css" type="text/css" charset="utf-8">
         <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=geometry,places"></script>
-        <script src="/application.js" type="text/javascript" charset="utf-8"></script>
+        <script src="application.js" type="text/javascript" charset="utf-8"></script>
         <script type="text/javascript" charset="utf-8">
             var jQuery = require("jqueryify");
             var exports = this;
@@ -16,87 +16,135 @@
                 exports.app = new App({
                     el : $("body")
                 });
-                
-                $('.special').hover(
-                    function(){
-                        var that = $(this);
-                        console.log("hover");
-                        clearTimeout(that.data('timeoutId'));
-                        $('.tooltip').hide();
-                        var timeoutId = setTimeout(function(){
-                            console.log("show");
-                            console.log(that, that.next('.tooltip'));
-                            that.next('.tooltip').fadeIn('fast');
-                            that.next('.tooltip').position({my: 'center top', at: 'center bottom+2px', of: that});
-                            var timeoutId = setTimeout(function(){
-                                console.log("hide");
-                                that.next('.tooltip').hide();
-                            }, 3000);
-                            that.data('timeoutId', timeoutId); 
-                        }, 250);
-                        //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
-                        that.data('timeoutId', timeoutId); 
 
-                    },function(e){
-                        var that = $(this);
-                        console.log("out");
-                        clearTimeout(that.data('timeoutId'));
-                        var timeoutId = setTimeout(function(){
+                $('.special').hover(function() {
+                    var that = $(this);
+                    console.log("hover");
+                    clearTimeout(that.data('timeoutId'));
+                    $('.tooltip').hide();
+                    var timeoutId = setTimeout(function() {
+                        console.log("show");
+                        console.log(that, that.next('.tooltip'));
+                        that.next('.tooltip').fadeIn('fast');
+                        that.next('.tooltip').position({
+                            my : 'center top',
+                            at : 'center bottom+2px',
+                            of : that
+                        });
+                        var timeoutId = setTimeout(function() {
                             console.log("hide");
                             that.next('.tooltip').hide();
-                        }, 50);
-                        //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
-                        that.data('timeoutId', timeoutId); 
-                    });
+                        }, 3000);
+                        that.data('timeoutId', timeoutId);
+                    }, 250);
+                    //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
+                    that.data('timeoutId', timeoutId);
+
+                }, function(e) {
+                    var that = $(this);
+                    console.log("out");
+                    clearTimeout(that.data('timeoutId'));
+                    var timeoutId = setTimeout(function() {
+                        console.log("hide");
+                        that.next('.tooltip').hide();
+                    }, 50);
+                    //set the timeoutId, allowing us to clear this trigger if the mouse comes back over
+                    that.data('timeoutId', timeoutId);
+                });
             });
         </script>
 
     </head>
     <body>
+        <a href="https://github.com/srossross/ocean-flow" id='fork-me'> <img src="images/forkme_right_red_aa0000.png" /> </a>
         <header class="clearfix">
             <div class='container clearfix'>
                 <h1> Ocean Flow </h1>
                 <ul class="toolbar " >
-                    <li id="currents-item" >
-                        <input type="checkbox" id="surface-currents" class="js-button" />
-                        <label for="surface-currents" class="special">Currents</label>
-                        <div class='tooltip'>
-                          <div class=arrow>▲</div>
-                          <div class=text>Select Currents</div>
-                        </div>
-                    </li>
                     <li>
-                        <div class="datetime-container ui-widget ui-state-default special">
-                            <input type="text" id="datepicker" />
+                        <div class="special datetime-container ui-button ui-widget ui-state-default ui-corner-all">
+                            <input type="text" id="datepicker" class="ui-button-text ui-state-default"/>
                         </div>
                         <div class='tooltip'>
-                          <div class=arrow>▲</div>
-                          <div class=text>Choose Start Date</div>
+                            <div class=arrow>
+                                ▲
+                            </div>
+                            <div class=text>
+                                Choose Start Date
+                            </div>
                         </div>
 
                     </li>
-                    <li>
-                        <button class="js-button special" id="clear-state">
-                            Clear
-                        </button>
+                    <li id="currents-item" >
+                        <input type="checkbox" id="surface-currents" class="js-button"/>
+                        <label for="surface-currents" id="surface-currents-label" class="special">
+                            <!-- <img class="wavy-icon" src="images/wavy.png"/> -->
+                            Current
+                        </label>
                         <div class='tooltip'>
-                          <div class=arrow>▲</div>
-                          <div class=text>Clear all currents</div>
+                            <div class=arrow>
+                                ▲
+                            </div>
+                            <div class=text>
+                                Select Currents
+                            </div>
                         </div>
                     </li>
+                    <li>
+                        <input class="search" placeholder="Go To Location..."/>
+                    </li>
+
+                    <!--                     <li>
+                    <button class="js-button special" id="clear-state" style="margin-left: 30px;">
+                    Clear
+                    </button>
+                    <div class='tooltip'>
+                    <div class=arrow>▲</div>
+                    <div class=text>Clear all currents</div>
+                    </div>
+                    </li> -->
                 </ul>
 
                 <ul class="toolbar right-toolbar">
-                    <li>
-                        <a href="http://www.tamu.edu/">
-                            <img class="logo" src="/images/TAMUlogoMaroonBevel.jpg" />
-                        </a>
+                    <li class="special">
+                        <a href="http://www.glo.texas.gov/" > <img class="logo" src="images/TGLOlogo.jpeg" /> </a>
                     </li>
-                    <li>
-                        <a href="http://www.enthought.com">
-                            <img class="logo" src="/images/entought-logo.png" />
-                        </a>
+                    <div class='tooltip'>
+                        <div class=arrow>
+                            ▲
+                        </div>
+                        <div class=text>
+                            Sponsored by
+                            <br/>
+                            Texas General Land Office
+                        </div>
+                    </div>
+                    <li class="special">
+                        <a href="http://www.tamu.edu/" > <img class="logo" src="images/TAMUlogoMaroonBevel.jpg" /> </a>
                     </li>
+                    <div class='tooltip'>
+                        <div class=arrow>
+                            ▲
+                        </div>
+                        <div class=text>
+                            Created by
+                            <br/>
+                            Texas A&M Uninversity
+                        </div>
+                    </div>
+                    <li class="special">
+                        <a href="http://www.enthought.com" > <img class="logo" src="images/entought-logo.png" /> </a>
+                    </li>
+                    <div class='tooltip'>
+                        <div class=arrow>
+                            ▲
+                        </div>
+                        <div class=text>
+                            Developed by
+                            <br/>
+                            Enthought
+                        </div>
+                    </div>
                     <li>
                         <button class="js-button" id="help-button">
                             Help
@@ -137,7 +185,9 @@
             <p>
                 Welcom to the surface current mapper!
             </p>
-            <p>More help content to come.</p>
+            <p>
+                More help content to come.
+            </p>
         </div>
 
         <footer>
