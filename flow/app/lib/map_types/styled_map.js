@@ -1,7 +1,7 @@
 var styles = [{
     featureType : "landscape",
     stylers : [{
-        color : "#555555"
+        color : "#657C65"
     }]
 }, {
     featureType : "administrative",

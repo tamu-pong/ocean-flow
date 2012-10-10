@@ -26,8 +26,10 @@ class App extends Spine.Controller
     @log("el", @el)
     @log("map_canvas", @map_canvas)
     
-    
     $('.js-button').button()
+    $('.js-button-wavy-icon').button
+      icons: {'primary': 'ui-icon-wavy'}
+      text: false
     
     @setup_tutorial()
     
@@ -48,7 +50,8 @@ class App extends Spine.Controller
           disableDoubleClickZoom: true
           mapTypeControlOptions:
             mapTypeIds: [google.maps.MapTypeId.TERRAIN, google.maps.MapTypeId.SATELLITE, SimpleMap.ID]
-            style: google.maps.MapTypeControlStyle.DROPDOWN_MENU
+            style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR
+            position: google.maps.ControlPosition.BOTTOM_CENTER
     
     @map = new google.maps.Map(@map_canvas[0], myOptions)
 
